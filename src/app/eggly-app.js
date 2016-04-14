@@ -1,31 +1,32 @@
-angular.module('Eggly', [
-    'categories',
-    'categories.bookmarks'
+angular.module('myApp', [
+
 ])
     .controller('MainCtrl', function ($scope) {
+        // give the name of the categories
         $scope.categories = [
-            {"id": 0, "name": "Development"},
-            {"id": 1, "name": "Design"},
-            {"id": 2, "name": "Exercise"},
-            {"id": 3, "name": "Humor"}
+            {"id": 0, "name": "Javascript"},
+            {"id": 1, "name": "CSS"},
+            {"id": 2, "name": "Coding"},
+            {"id": 3, "name": "Campus"},
+            {"id": 4, "name": "Other"},
         ];
 
-        $scope.bookmarks = [
-            {"id": 0, "title": "AngularJS", "url": "http://angularjs.org", "category": "Development" },
-            {"id": 1, "title": "Egghead.io", "url": "http://angularjs.org", "category": "Development" },
-            {"id": 2, "title": "A List Apart", "url": "http://alistapart.com/", "category": "Design" },
-            {"id": 3, "title": "One Page Love", "url": "http://onepagelove.com/", "category": "Design" },
-            {"id": 4, "title": "MobilityW OD", "url": "http://www.mobilitywod.com/", "category": "Exercise" },
-            {"id": 5, "title": "Robb Wolf", "url": "http://robbwolf.com/", "category": "Exercise" },
-            {"id": 6, "title": "Senor Gif", "url": "http://memebase.cheezburger.com/senorgif", "category": "Humor" },
-            {"id": 7, "title": "Wimp", "url": "http://wimp.com", "category": "Humor" },
-            {"id": 8, "title": "Dump", "url": "http://dump.com", "category": "Humor" }
+        $scope.todos = [
+            {"id": 0, "title": "AngularJS", "content": "http://angularjs.org", "category": "Javascript" },
+            {"id": 1, "title": "Egghead.io", "content": "http://angularjs.org", "category": "Javascript" },
+            {"id": 2, "title": "A List Apart", "content": "http://alistapart.com/", "category": "CSS" },
+            {"id": 3, "title": "One Page Love", "content": "http://onepagelove.com/", "category": "CSS" },
+            {"id": 4, "title": "MobilityW OD", "content": "http://www.mobilitywod.com/", "category": "Coding" },
+            {"id": 5, "title": "Robb Wolf", "content": "http://robbwolf.com/", "category": "Coding" },
+            {"id": 6, "title": "Senor Gif", "content": "http://memebase.cheezburger.com/senorgif", "category": "Campus" },
+            {"id": 7, "title": "Wimp", "content": "http://wimp.com", "category": "Campus" },
+            {"id": 8, "title": "Dump", "content": "http://dump.com", "category": "Other" }
         ];
 
         $scope.isCreating = false;
         $scope.isEditing = false;
         $scope.currentCategory = null;
-        $scope.editedBookmark = null;
+        $scope.editedTodo = null;
 
         function isCurrentCategory(category) {
             return $scope.currentCategory !== null && category.name === $scope.currentCategory.name;
@@ -41,21 +42,21 @@ angular.module('Eggly', [
         $scope.isCurrentCategory = isCurrentCategory;
         $scope.setCurrentCategory = setCurrentCategory;
 
-        function setEditedBookmark(bookmark) {
-            $scope.editedBookmark = angular.copy(bookmark);
+        function setEditedTodo(todo) {
+            $scope.editedTodo = angular.copy(todo);
         }
 
-        function isSelectedBookmark(bookmarkId) {
-            return $scope.editedBookmark !== null && $scope.editedBookmark.id === bookmarkId;
+        function isSelectedTodo(todoId) {
+            return $scope.editedTodo !== null && $scope.editedTodo.id === todoId;
         }
 
-        $scope.setEditedBookmark = setEditedBookmark;
-        $scope.isSelectedBookmark = isSelectedBookmark;
+        $scope.setEditedTodo = setEditedTodo;
+        $scope.isSelectedTodo = isSelectedTodo;
 
         function resetCreateForm() {
-            $scope.newBookmark = {
+            $scope.newTodo = {
                 title: '',
-                url: '',
+                content: '',
                 category: $scope.currentCategory
             };
         }
@@ -63,32 +64,37 @@ angular.module('Eggly', [
         //-------------------------------------------------------------------------------------------------
         // CRUD
         //-------------------------------------------------------------------------------------------------
-        function createBookmark(bookmark) {
-            bookmark.id = $scope.bookmarks.length;
-            $scope.bookmarks.push(bookmark);
-
+        
+        //for create new
+        function createTodo(todo) {
+            todo.id = $scope.todos.length;
+            $scope.todos.push(todo);
             resetCreateForm();
         }
 
-        function updateBookmark(bookmark) {
-            var index = _.findIndex($scope.bookmarks, function (b) {
-                return b.id == bookmark.id
+        function updateTodo(todo) {
+            var index = _.findIndex($scope.todos, function (b) {
+                return b.id == todo.id
             });
-            $scope.bookmarks[index] = bookmark;
+            // var ids = $scope.todos.map(function(todo){return todo.id});
+            // var index = ids.indexOf(todo.id);
 
-            $scope.editedBookmark = null;
+            // console.log('index of ' + todo.title + ' is ' + index);
+            $scope.todos[index] = todo;
+
+            $scope.editedTodo = null;
             $scope.isEditing = false;
         }
 
-        function deleteBookmark(bookmark) {
-            _.remove($scope.bookmarks, function (b) {
-                return b.id == bookmark.id;
+        function deleteTodo(todo) {
+            _.remove($scope.todos, function (b) {
+                return b.id == todo.id;
             });
         }
 
-        $scope.createBookmark = createBookmark;
-        $scope.updateBookmark = updateBookmark;
-        $scope.deleteBookmark = deleteBookmark;
+        $scope.createTodo = createTodo;
+        $scope.updateTodo = updateTodo;
+        $scope.deleteTodo = deleteTodo;
 
         //-------------------------------------------------------------------------------------------------
         // CREATING AND EDITING STATES
@@ -116,13 +122,14 @@ angular.module('Eggly', [
         }
 
         function startEditing() {
+            //display the edit view
             $scope.isCreating = false;
             $scope.isEditing = true;
         }
 
         function cancelEditing() {
             $scope.isEditing = false;
-            $scope.editedBookmark = null;
+            $scope.editedTodo = null;
         }
 
         $scope.startEditing = startEditing;
