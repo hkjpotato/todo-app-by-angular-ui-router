@@ -1,0 +1,9 @@
+<!-- sidebar -->
+<a ui-sref="myapp.categories"><img class="logo" src="assets/img/todo.png"></a>
+<ul class="nav nav-sidebar">
+    <li ng-repeat="category in categoriesListCtrl.categories" ng-class="{'active':isCurrentCategory(category)}">
+        <a ui-sref="myapp.categories.todos({category: category.name})">
+            {{category.name}}
+        </a>
+    </li>
+</ul>

@@ -1,0 +1,12 @@
+<form class="create-form" role="form" ng-submit="createTodoCtrl.createTodo(createTodoCtrl.newTodo)" novalidate>
+    <div class="form-group">
+        <label for="newTodoTitle">Todo Title</label>
+        <input type="text" class="form-control" id="newTodoTitle" ng-model="createTodoCtrl.newTodo.title" placeholder="Enter title">
+    </div>
+    <div class="form-group">
+        <label for="newTodoContent">Todo Content</label>
+        <textarea class="form-control" rows="5" id="newTodoContent" ng-model="createTodoCtrl.newTodo.content" placeholder="Enter Content"></textarea>
+    </div>
+    <button type="submit" class="btn btn-danger btn-lg">Create</button>
+    <button type="button" class="btn btn-default btn-lg pull-right" ng-click="createTodoCtrl.cancelCreating()">Cancel</button>
+</form>

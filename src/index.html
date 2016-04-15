@@ -11,70 +11,15 @@
     <link rel="stylesheet" href="assets/css/myApp.css">
     <link rel="stylesheet" href="assets/css/animations.css">
 </head>
-<body ng-controller="MainCtrl">
-    <div class="container-fluid">
-        <div class="row">
-            <!-- side bar -->
-            <div class="col-sm-3 col-md-2 sidebar">
-                <a ng-click="setCurrentCategory(null)"><img class="logo" src="assets/img/todo.png"></a>
-                <ul class="nav nav-sidebar">
-                    <li ng-repeat="category in categories" ng-class="{'active':isCurrentCategory(category)}">
-                        <a ng-click="setCurrentCategory(category)">
-                            {{category.name}}
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- main view -->
-            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-
-                <!-- todo list -->
-                <div ng-class="{active: isSelectedTodo(todo.id)}"  ng-repeat="todo in todos | filter:{category:currentCategory.name}">
-                    <span class="close" ng-click="deleteTodo(todo)"><span class="glyphicon glyphicon-ok"></span></span>
-                    <span class="btn btn-link" ng-click="setEditedTodo(todo);startEditing();" ><span class="glyphicon glyphicon-pencil"></span>
-                    </span>
-                    <a>{{todo.title}}</a>
-                </div>
-
-
-                <hr/>
-                <!-- CREATING -->
-                <div ng-if="shouldShowCreating()">
-                    <span class="btn btn-link" ng-click="startCreating()">
-                        <span class="glyphicon glyphicon-plus"></span>
-                        Create Todo
-                    </span>
-                    <form class="create-form" ng-show="isCreating" role="form" ng-submit="createTodo(newTodo)" novalidate>
-                        <div class="form-group">
-                            <label for="newTodoTitle">Todo Title</label>
-                            <input type="text" class="form-control" id="newTodoTitle" ng-model="newTodo.title" placeholder="Enter title">
-                        </div>
-                        <div class="form-group">
-                            <label for="newTodoContent">Todo Content</label>
-                            <textarea class="form-control" rows="5" id="newTodoContent" ng-model="newTodo.content" placeholder="Enter Content"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-danger btn-lg">Create</button>
-                        <button type="button" class="btn btn-default btn-lg pull-right" ng-click="cancelCreating()">Cancel</button>
-                    </form>
-                </div>
-                <!-- EDITING -->
-                <div ng-show="shouldShowEditing()">
-                    <h4>Editing {{editedTodo.title}}</h4>
-                    <form class="edit-form" role="form" ng-submit="updateTodo(editedTodo)" novalidate>
-                        <div class="form-group">
-                            <label>Todo Title</label>
-                            <input type="text" class="form-control" ng-model="editedTodo.title" placeholder="Enter title">
-                        </div>
-                        <div class="form-group">
-                            <label>Todo Content</label>
-                            <textarea class="form-control" rows="5" ng-model="editedTodo.content" placeholder="Enter Content"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-danger btn-lg">Save</button>
-                        <button type="button" class="btn btn-default btn-lg pull-right" ng-click="cancelEditing()">Cancel</button>
-                    </form>
-                </div>
-            </div>
+<body>
+<!--     <div class="container-fluid" ui-view>
+    </div> -->
+    <div class="row">
+        <!-- sidebar -->
+        <div class="col-sm-3 col-md-2 sidebar" ui-view="categories">
+        </div>
+        <!-- main view -->
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ui-view="todos">
         </div>
     </div>
 
@@ -82,13 +27,14 @@
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.js"></script>
+    <script src="vendor/angular-ui-router.min.js"></script>
 
-    <script src="app/eggly-app.js"></script>
-<!--     <script src="app/categories/categories.js"></script>
-    <script src="app/categories/bookmarks/bookmarks.js"></script>
-    <script src="app/categories/bookmarks/create/bookmark-create.js"></script>
-    <script src="app/categories/bookmarks/edit/bookmark-edit.js"></script>
-    <script src="app/common/models/bookmarks-model.js"></script>
-    <script src="app/common/models/categories-model.js"></script> -->
+    <script src="app/myapp.start.js"></script>
+    <script src="app/categories/categories.js"></script>
+    <script src="app/categories/todos/todos.js"></script>
+    <script src="app/categories/todos/create/todo-create.js"></script>
+    <script src="app/categories/todos/edit/todo-edit.js"></script>
+    <script src="app/common/models/todos-model.js"></script>
+    <script src="app/common/models/categories-model.js"></script>
 </body>
 </html>

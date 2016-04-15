@@ -1,0 +1,15 @@
+<!-- EDITING -->
+<form class="edit-form" role="form" ng-submit="editTodoCtrl.updateTodo(editTodoCtrl.editedTodo)" novalidate>
+    <h2>Editing <span class="important">{{editTodoCtrl.todo.title}}</span><h2>
+
+    <div class="form-group">
+        <label>Todo Title</label>
+        <input type="text" class="form-control" ng-model="editTodoCtrl.editedTodo.title" placeholder="Enter title">
+    </div>
+    <div class="form-group">
+        <label>Todo Content</label>
+        <textarea class="form-control" rows="5" ng-model="editTodoCtrl.editedTodo.content" placeholder="Enter Content"></textarea>
+    </div>
+    <button type="submit" class="btn btn-danger btn-lg">Save</button>
+    <button type="button" class="btn btn-default btn-lg pull-right" ng-click="editTodoCtrl.cancelEditing()">Cancel</button>
+</form>

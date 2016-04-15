@@ -5,11 +5,25 @@ body {
     height: 100%;
     color: #4F534E;
 }
+
+body {
+    font-weight: 300;
+    font-family: helvetica;
+}
+label {
+    font-weight: 300;
+    font-size: 24px;
+}
+.important {
+    color: #e04138;  
+}
 a {
+    font-weight: 300;
     color: #ae261e;
     font-size: 24px;
     text-decoration: none;
 }
+
 a:visited {
     color:#ae261e;
 }
@@ -17,6 +31,11 @@ a:visited {
 a > img {
     width: 100%;
     cursor: pointer;
+}
+@media (max-width: 768px) {
+    a > img {
+        display: none;
+    }
 }
 a:hover {
     color: #e04138;
@@ -53,9 +72,11 @@ a:hover {
 }
 
 .sidebar {
-    display: none;
+    /*display: none;*/
     padding-left: 0px;
     padding-right: 0px;
+    background-color: #E86C62;
+
 }
 
 .sidebar > ul {
@@ -100,13 +121,13 @@ a:hover {
         display: block;
         overflow-x: hidden;
         overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-        background-color: #E86C62;
     }
 }
 
 .main {
     padding-top: 96px;
-    padding-left: 24px;
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
 .createBookmark {
@@ -116,4 +137,8 @@ a:hover {
 
 .create-form, .edit-form {
     padding: 20px;
+}
+
+input, select, textarea, button {
+    font:inherit;
 }
