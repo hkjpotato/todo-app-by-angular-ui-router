@@ -4,7 +4,7 @@
 	{"id": 2, "title": "Responsive Web Design", "content": "Finish the Responsive Design Training", "category": "CSS" },
 	{"id": 3, "title": "Cross Browser Issue", "content": "Finish the Cross Browser Training", "category": "CSS" },
 	{"id": 4, "title": "Binary Search & Binary Tree", "content": "Before Friday -- must done", "category": "Coding" },
-	{"id": 5, "title": "LRU Cache", "content": "Implement LRU cache in javascript": "Coding" },
+	{"id": 5, "title": "LRU Cache", "content": "Implement LRU cache in javascript", "category": "Coding" },
 	{"id": 6, "title": "HCI Research Project", "content": "Single page web in ReactJS", "category": "Campus" },
 	{"id": 8, "title": "Personal Website Update", "content": "I am doing it", "category": "Other" },
 	{"id": 8, "title": "NodeJS Server", "content": "Understand Express Server on Cache, Cookie and Session", "category": "Other" },
