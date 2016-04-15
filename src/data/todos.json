@@ -1,12 +1,12 @@
 [
 	{"id": 0, "title": "AngularJS", "content": "Go through the training videos on Egghead.io.", "category": "Javascript" },
 	{"id": 1, "title": "Memory Profiling", "content": "go to https://developer.chrome.com/devtools/docs/javascript-memory-profiling to study memory profiling.","category": "Javascript" },
-	{"id": 2, "title": "Responsive Web Design", "content": "http://alistapart.com/", "category": "CSS" },
-	{"id": 3, "title": "Cross Browser Issue", "content": "http://onepagelove.com/", "category": "CSS" },
-	{"id": 4, "title": "Binary Search & Binary Tree", "content": "http://www.mobilitywod.com/", "category": "Coding" },
-	{"id": 5, "title": "LRU Cache", "content": "http://robbwolf.com/", "category": "Coding" },
-	{"id": 6, "title": "HCI Research Project", "content": "http://memebase.cheezburger.com/senorgif", "category": "Campus" },
-	{"id": 8, "title": "Personal Website Update", "content": "Go through the eggly tutorials", "category": "Other" },
+	{"id": 2, "title": "Responsive Web Design", "content": "Finish the Responsive Design Training", "category": "CSS" },
+	{"id": 3, "title": "Cross Browser Issue", "content": "Finish the Cross Browser Training", "category": "CSS" },
+	{"id": 4, "title": "Binary Search & Binary Tree", "content": "Before Friday -- must done", "category": "Coding" },
+	{"id": 5, "title": "LRU Cache", "content": "Implement LRU cache in javascript": "Coding" },
+	{"id": 6, "title": "HCI Research Project", "content": "Single page web in ReactJS", "category": "Campus" },
+	{"id": 8, "title": "Personal Website Update", "content": "I am doing it", "category": "Other" },
 	{"id": 8, "title": "NodeJS Server", "content": "Understand Express Server on Cache, Cookie and Session", "category": "Other" },
-	{"id": 9, "title": "React Data Vis", "content": "Update my Resume and Linkin", "category": "Other" }
+	{"id": 9, "title": "React Data Vis", "content": "Use the react data vis library developed by Uber Data Vis Team", "category": "Other" }
 ]
